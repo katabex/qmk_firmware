@@ -15,7 +15,7 @@
  */
 #pragma once
 
-#define EE_HANDS
+// #define EE_HANDS
 
 // OLED driver
 #ifdef OLED_DRIVER_ENABLE

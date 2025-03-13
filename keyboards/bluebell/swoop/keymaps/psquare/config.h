@@ -15,8 +15,8 @@
  */
 #pragma once
 
-#define EE_HANDS
-#define MASTER_LEFT
+//#define EE_HANDS
+//#define MASTER_LEFT
 
 // OLED driver
 #ifdef OLED_DRIVER_ENABLE
@@ -24,9 +24,7 @@
   #define OLED_TIMEOUT 30000
 #endif
 
-#define ENCODER_A_PINS { B4 }
-#define ENCODER_B_PINS { B5 }
-#define ENCODER_RESOLUTIONS { 4 }
-#define ENCODER_A_PINS_RIGHT { B5 }
-#define ENCODER_B_PINS_RIGHT { B4 }
-#define ENCODER_RESOLUTIONS_RIGHT { 4 }
+//#define ENCODER_A_PINS_RIGHT { B5 }
+//#define ENCODER_B_PINS_RIGHT { B4 }
+//#define ENCODER_RESOLUTIONS_RIGHT { 4 }
+

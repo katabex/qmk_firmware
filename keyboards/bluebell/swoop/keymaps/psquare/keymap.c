@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 
 enum layer_names {
-  _BSE,
+  _QRT,
   _NAV,
   _SYM,
   _NUM,
@@ -42,56 +42,90 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [0] = LAYOUT_split_3x5_3(
+    [_QRT] = LAYOUT_split_3x5_3(
 	KC_Q, KC_W, KC_E, KC_R, KC_T, 							            KC_Y, KC_U, KC_I, KC_O, KC_P,
 	KC_A, KC_S, KC_D, KC_F, KC_G,		                                                    KC_H, KC_J, KC_K, KC_L, KC_SCLN,
 	MT(MOD_LGUI, KC_Z), MT(MOD_LALT, KC_X), MT(MOD_LCTL, KC_C), MT(MOD_LSFT, KC_V), KC_B, 	    KC_N, MT(MOD_RSFT, KC_M), MT(MOD_RCTL, KC_COMM), MT(MOD_RALT, KC_DOT), MT(MOD_RGUI, KC_SLSH),
-	KC_LCTL, LT(1,KC_SPC), LT(4,KC_TAB), 							    LT(2,KC_ENT), LT(3,KC_BSPC), KC_LALT
+	KC_MEDIA_PLAY_PAUSE, LT(1,KC_SPC), LT(4,KC_TAB), 					    LT(2,KC_ENT), LT(3,KC_BSPC), KC_DEL
 ),
 
 
-    [1] = LAYOUT_split_3x5_3(
-	KC_ESC, KC_DEL, KC_NO, KC_NO, KC_NO, 		KC_CIRC, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN,
-	KC_TAB, KC_BSPC, KC_LCTL, KC_LSFT, KC_NO, 	KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DLR,
+    [_NAV] = LAYOUT_split_3x5_3(
+	KC_ESC, KC_BSPC, KC_DEL, KC_NO, KC_NO, 		KC_CIRC, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN,
+	KC_TAB, KC_NO, KC_NO, KC_NO, KC_NO, 	KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DLR,
 	KC_NO, KC_NO, KC_LCTL, KC_LSFT, KC_PSCR, 	KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_INS,
-	KC_LCTL, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_LALT
+	KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 
-    [2] = LAYOUT_split_3x5_3(
+    [_SYM] = LAYOUT_split_3x5_3(
 	KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_HASH, 	KC_CIRC, KC_TILD, KC_NO, KC_NO, KC_NO,
 	KC_DLR, KC_PERC, KC_LCBR, KC_RCBR, KC_PSLS, 	KC_BSLS, KC_UNDS, KC_NO, KC_NO, KC_NO,
 	KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_QUOT,	KC_DQUO, KC_PIPE, KC_NO, KC_NO, KC_NO,
-	KC_LCTL, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_LALT
+	KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 
-    [3] = LAYOUT_split_3x5_3(
+    [_NUM] = LAYOUT_split_3x5_3(
 	KC_EQL, KC_7, KC_8, KC_9, KC_0, 		    KC_HASH, KC_F9, KC_F10, KC_F11, KC_F12,
 	KC_PAST, KC_4, 	KC_5, KC_6, KC_PPLS, 		    KC_COMM, KC_F5, KC_F6, KC_F7, KC_F8,
 	KC_PSLS, KC_1, KC_2, KC_3, KC_PMNS, 		    KC_UNDS, MT(MOD_RSFT, KC_F1), KC_F2, KC_F3, KC_F4,
-	KC_LCTL, KC_TRNS, KC_TRNS, 	    		    KC_TRNS, KC_TRNS, KC_LALT
+	KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, 	    		    KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 
-    [4] = LAYOUT_split_3x5_3(
+    [_MED] = LAYOUT_split_3x5_3(
 	RGB_TOG, KC_NO, KC_NO, KC_NO, KC_NO, 		KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO,
 	RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, 	KC_VOLU, KC_MFFD, KC_NO, KC_NO, KC_NO,
 	RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, 	KC_VOLD, KC_MRWD, KC_NO, KC_NO, QK_BOOT,
-	KC_LCTL, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_LALT
+	KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, 			KC_TRNS, KC_TRNS, KC_TRNS
 )
 };
 
-
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),  ENCODER_CCW_CW(KC_DOWN, KC_UP)  },
-    [1] = { ENCODER_CCW_CW(UG_HUED, UG_HUEU),  ENCODER_CCW_CW(UG_SATD, UG_SATU)  },
-    [2] = { ENCODER_CCW_CW(UG_VALD, UG_VALU),  ENCODER_CCW_CW(UG_SPDD, UG_SPDU)  },
-    [3] = { ENCODER_CCW_CW(UG_PREV, UG_NEXT),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
-    [4] = { ENCODER_CCW_CW(UG_PREV, UG_NEXT),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
+    [_QRT] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),  ENCODER_CCW_CW(KC_UP, KC_DOWN)  },
+    [_NAV] = { ENCODER_CCW_CW(UG_HUED, UG_HUEU),  ENCODER_CCW_CW(UG_SATD, UG_SATU)  },
+    [_SYM] = { ENCODER_CCW_CW(UG_VALD, UG_VALU),  ENCODER_CCW_CW(UG_SPDD, UG_SPDU)  },
+    [_NUM] = { ENCODER_CCW_CW(UG_PREV, UG_NEXT),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
+    [_MED] = { ENCODER_CCW_CW(UG_PREV, UG_NEXT),  ENCODER_CCW_CW(UG_HUED, UG_HUEU) },
 };
 
-
+/*
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        // Base layer (you can also use the enums in `enum layer_names` instead of 0, 1, 2, etc.) 
+        if (layer_state_is(0)) {
+            if (clockwise) {
+                tap_code(KC_VOLU);
+            } else {
+                tap_code(KC_VOLD);
+            }
+        } else if (layer_state_is(1)) {
+            if (clockwise) {
+                tap_code(KC_UP);
+            } else {
+                tap_code(KC_DOWN);
+            }
+        }
+    }
+    else if (index == 1) {
+        if (layer_state_is(0)) {
+            if (clockwise) {
+                tap_code(KC_PGDN);
+            } else {
+                tap_code(KC_PGUP);
+            }
+        } else if (layer_state_is(1)) {
+            if (clockwise) {
+                tap_code(KC_HOME);
+            } else {
+                tap_code(KC_END);
+            }
+        }
+    }
+    return true;
+}
+*/
 static void render_logo(void) {
     static const char PROGMEM qmk_logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
@@ -109,23 +143,23 @@ bool oled_task_user(void) {
 
     switch (get_highest_layer(layer_state)) {
         case 0:
-            oled_write_P(PSTR("QWE\n"), false);
+            oled_write_P(PSTR("QWERTY\n"), false);
             break;
         case 1:
-            oled_write_P(PSTR("NAV\n"), false);
+            oled_write_P(PSTR("NAVIGATION\n"), false);
             break;
         case 2:
-            oled_write_P(PSTR("SYM\n"), false);
+            oled_write_P(PSTR("SYMBOLS\n"), false);
             break;
 	case 3:
-            oled_write_P(PSTR("NUM\n"), false);
+            oled_write_P(PSTR("NUMBERS\n"), false);
             break;
 	case 4:
-            oled_write_P(PSTR("MED\n"), false);
+            oled_write_P(PSTR("MEDIA\n"), false);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Querty"), false);
+            oled_write_ln_P(PSTR("QWERTY"), false);
 	}
     }	else { 
         render_logo();  // Renders a static logo
